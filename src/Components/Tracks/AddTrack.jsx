@@ -6,7 +6,7 @@ class AddTrack extends Component {
 
   AddTrack = () => {
     console.log("funcAddtrack", this.trackInput.value);
-    if (this.trackInput.value !== "") {
+    if (this.trackInput.value !== " ") {
       this.props.onAddTrack(this.trackInput.value);
     }
 
@@ -38,7 +38,7 @@ class AddTrack extends Component {
 
 export default connect(
   state => ({
-    testStore: state
+    testStore: state.tracks
   }),
   dispatch => ({
     onAddTrack: trackName => {

@@ -5,18 +5,23 @@ import { createStore } from "redux";
 import { Provider } from "react-redux";
 //import { counter } from "./reducers/counter";
 
-const initialState = ["Smells like spirit", "Enter Sandman"];
+const initialState = {
+  tracks: ["Smells like spirit", "Enter Sandman"],
+  playlists: ["My home playlist", "My work playlist"]
+};
 
 function playlist(state = initialState, action) {
-  console.log(action);
   if (action.type === "ADD_TRACK") {
-    return [...state, action.payload];
+    return {
+      ...state,
+      tracks: [...state.tracks, action.payload]
+    };
   }
 
   return state;
 }
 
-const store = createStore(playlist);
+const store = createStore(playlist, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
 ReactDOM.render(
   <Provider store={store}>
