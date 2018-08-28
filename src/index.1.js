@@ -1,8 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import App from "./App";
 import { createStore } from "redux";
-import { Provider, connect } from "react-redux";
 
 function counter(state = 0, action) {
   switch (action.type) {
@@ -22,9 +20,15 @@ function counter(state = 0, action) {
 
 const store = createStore(counter);
 
-ReactDOM.render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
-  document.getElementById("root")
-);
+const render = () =>
+  ReactDOM.render(
+    <div>
+      <button onClick={() => store.dispatch({ type: "DECREMENT" })}>-</button>
+      {store.getState()}
+      <button onClick={() => store.dispatch({ type: "INCREMENT" })}>+</button>
+    </div>,
+    document.getElementById("root")
+  );
+
+render();
+store.subscribe(render);
