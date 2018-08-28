@@ -4,8 +4,25 @@ import { connect } from "react-redux";
 class AddTrack extends Component {
   state = {};
   render() {
-    return <div>addTrack</div>;
+    console.log(this.props.testStore);
+    const { testStore } = this.props;
+    return (
+      <div>
+        <input type="text" />
+        <button>AddTrack</button>
+        <ul>
+          {testStore.map((track, i) => (
+            <li key={i}>{track}</li>
+          ))}
+        </ul>
+      </div>
+    );
   }
 }
 
-export default AddTrack;
+export default connect(
+  state => ({
+    testStore: state
+  }),
+  dispatch => ({})
+)(AddTrack);
