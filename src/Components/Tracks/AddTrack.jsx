@@ -55,17 +55,21 @@ class AddTrack extends Component {
   }
 }
 
+const mapStateToProps = state => ({
+  testStore: state.tracks,
+  playlists: state.playlists
+});
+
+const mapDispatchToProps = dispatch => ({
+  onAddTrack: trackName => {
+    dispatch({ type: "ADD_TRACK", payload: trackName });
+  },
+  onAddPlaylist: playlistName => {
+    dispatch({ type: "ADD_PLAYLIST", payload: playlistName });
+  }
+});
+
 export default connect(
-  state => ({
-    testStore: state.tracks,
-    playlists: state.playlists
-  }),
-  dispatch => ({
-    onAddTrack: trackName => {
-      dispatch({ type: "ADD_TRACK", payload: trackName });
-    },
-    onAddPlaylist: playlistName => {
-      dispatch({ type: "ADD_PLAYLIST", payload: playlistName });
-    }
-  })
+  mapStateToProps,
+  mapDispatchToProps
 )(AddTrack);
