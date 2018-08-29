@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import ClientsList from "../containers/ClientsList";
+import ClientsDetails from "../containers/ClientsDetails";
 
 class Clients extends Component {
   render() {
@@ -9,14 +11,14 @@ class Clients extends Component {
         <div>
           <div>
             <h3>Clients: </h3>
-            <ul>
-              <li>Client</li>
-            </ul>
+            <ClientsList />
           </div>
 
           <div>
             <h3>ClientsDetail: </h3>
-            <div>Details</div>
+            <div>
+              <ClientsDetails />
+            </div>
           </div>
         </div>
       </div>
