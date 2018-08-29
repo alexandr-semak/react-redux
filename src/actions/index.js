@@ -1,5 +1,5 @@
 export const selectClient = client => {
-  console.log(client.general.firstName);
+  //console.log(client.general.firstName);
   return {
     type: "CLIENT_SELECTED",
     payload: client

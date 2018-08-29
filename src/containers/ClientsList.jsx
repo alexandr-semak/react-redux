@@ -21,7 +21,7 @@ class ClientsList extends Component {
 }
 
 function mapStateToProps(state) {
-  console.log(state.clients);
+  //console.log(state.clients);
   return {
     clients: state.clients
   };
