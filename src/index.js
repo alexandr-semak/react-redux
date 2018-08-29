@@ -16,6 +16,11 @@ function playlist(state = initialState, action) {
       ...state,
       tracks: [...state.tracks, action.payload]
     };
+  } else if (action.type === "ADD_PLAYLIST") {
+    return {
+      ...state,
+      playlists: [...state.playlists, action.payload]
+    };
   }
 
   return state;

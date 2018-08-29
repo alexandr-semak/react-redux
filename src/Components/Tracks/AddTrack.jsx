@@ -13,6 +13,10 @@ class AddTrack extends Component {
     this.trackInput.value = "";
   };
 
+  AddPlaylist = () => {
+    this.props.onAddPlaylist(this.playlistkInput.value);
+  };
+
   render() {
     console.log(this.props.testStore);
     const { testStore } = this.props;
@@ -31,6 +35,21 @@ class AddTrack extends Component {
             <li key={i}>{track}</li>
           ))}
         </ul>
+
+        <hr />
+
+        <input
+          type="text"
+          ref={input => {
+            this.playlistkInput = input;
+          }}
+        />
+        <button onClick={this.AddPlaylist}>AddPlaylist</button>
+        <ul>
+          {this.props.playlists.map((playlist, i) => (
+            <li key={i}>{playlist}</li>
+          ))}
+        </ul>
       </div>
     );
   }
@@ -38,11 +57,15 @@ class AddTrack extends Component {
 
 export default connect(
   state => ({
-    testStore: state.tracks
+    testStore: state.tracks,
+    playlists: state.playlists
   }),
   dispatch => ({
     onAddTrack: trackName => {
       dispatch({ type: "ADD_TRACK", payload: trackName });
+    },
+    onAddPlaylist: playlistName => {
+      dispatch({ type: "ADD_PLAYLIST", payload: playlistName });
     }
   })
 )(AddTrack);
