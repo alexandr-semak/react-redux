@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-//import Counter from "./Components/Counter";
 import AddTrack from "./Components/Tracks/AddTrack";
+import Clients from "./Components/Clients";
 
 class App extends Component {
   render() {
@@ -8,6 +8,8 @@ class App extends Component {
       <div className="App">
         App
         <AddTrack />
+        <hr />
+        <Clients />
       </div>
     );
   }

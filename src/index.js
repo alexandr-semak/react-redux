@@ -3,30 +3,13 @@ import ReactDOM from "react-dom";
 import App from "./App";
 import { createStore } from "redux";
 import { Provider } from "react-redux";
+import rootReducers from "./reducers";
 //import { counter } from "./reducers/counter";
 
-const initialState = {
-  tracks: ["Smells like spirit", "Enter Sandman"],
-  playlists: ["My home playlist", "My work playlist"]
-};
-
-function playlist(state = initialState, action) {
-  if (action.type === "ADD_TRACK") {
-    return {
-      ...state,
-      tracks: [...state.tracks, action.payload]
-    };
-  } else if (action.type === "ADD_PLAYLIST") {
-    return {
-      ...state,
-      playlists: [...state.playlists, action.payload]
-    };
-  }
-
-  return state;
-}
-
-const store = createStore(playlist, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+const store = createStore(
+  rootReducers,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
 
 ReactDOM.render(
   <Provider store={store}>
@@ -34,17 +17,6 @@ ReactDOM.render(
   </Provider>,
   document.getElementById("root")
 );
-
-// function playlist(state = [], action) {
-//   console.log(action);
-//   if (action.type === "ADD_TRACK") {
-//     return [...state, action.payload];
-//   }
-
-//   return state;
-// }
-
-// const store = createStore(playlist);
 
 // store.subscribe(() => {
 //   console.log("subsribe", store.getState());
