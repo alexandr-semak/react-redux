@@ -3,7 +3,18 @@ import { connect } from "react-redux";
 
 class ClientsList extends Component {
   render() {
-    return <div>ClientsList</div>;
+    return (
+      <div>
+        <ul>
+          {this.props.clients.map((client, i) => (
+            <li key={i}>
+              <img src={client.general.avatar} alt="alt" />
+              {client.general.firstName + " " + client.general.lastName}
+            </li>
+          ))}
+        </ul>
+      </div>
+    );
   }
 }
 

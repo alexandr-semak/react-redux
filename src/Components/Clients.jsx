@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { connect } from "react-redux";
 import ClientsList from "../containers/ClientsList";
 import ClientsDetails from "../containers/ClientsDetails";
 
